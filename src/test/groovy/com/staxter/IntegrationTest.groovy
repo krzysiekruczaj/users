@@ -53,7 +53,7 @@ class IntegrationTest extends Specification {
                 .andExpect(status().isConflict())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("\$.code").value("USER_ALREADY_EXISTS"))
-                .andExpect(jsonPath("\$.description").value("A user with the given username already exists"))
+                .andExpect(jsonPath("\$.message").value("A user with the given username already exists"))
     }
 
     void "should reject incorrect username"() throws Exception {
@@ -68,7 +68,7 @@ class IntegrationTest extends Specification {
                 .andExpect(status().isUnauthorized())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("\$.code").value("INCORRECT_CREDENTIALS"))
-                .andExpect(jsonPath("\$.description").value("Username or password do not match"));
+                .andExpect(jsonPath("\$.message").value("Username or password do not match"));
     }
 
     void "should reject incorrect password"() throws Exception {
@@ -89,7 +89,7 @@ class IntegrationTest extends Specification {
                 .andExpect(status().isUnauthorized())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("\$.code").value("INCORRECT_CREDENTIALS"))
-                .andExpect(jsonPath("\$.description").value("Username or password do not match"));
+                .andExpect(jsonPath("\$.message").value("Username or password do not match"));
     }
 
     static buildLoginJson(String username, String password) {
