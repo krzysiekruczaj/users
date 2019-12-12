@@ -18,7 +18,7 @@ class IntegrationTest extends Specification {
     @Autowired
     private MockMvc mvc;
 
-    def "should verify critical path"() {
+    def "should allow user to register, login and fail to reuse same username"() {
         given:
         def userName = randomString()
         def password = randomString()
